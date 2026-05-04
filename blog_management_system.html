@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blog Management System</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    display: flex;
+    background: #0a0f1c;
+    color: #fff;
+}
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #111827;
+    padding: 20px;
+    position: fixed;
+}
+
+.sidebar h2 {
+    color: #38bdf8;
+    margin-bottom: 30px;
+}
+
+.sidebar a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover, .active {
+    background: #1e293b;
+    color: #38bdf8;
+}
+
+.main {
+    margin-left: 220px;
+    width: 100%;
+}
+
+.topbar {
+    background: #111827;
+    padding: 15px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.topbar h1 {
+    color: #38bdf8;
+}
+
+.content {
+    padding: 20px;
+}
+
+.card {
+    background: #111827;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #1e293b;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #38bdf8;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #0a0f1c;
+    border: 1px solid #1e293b;
+    color: white;
+    border-radius: 5px;
+}
+
+button {
+    background: #38bdf8;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0ea5e9;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>BLOG SYS</h2>
+    <a href="#" onclick="showSection('dashboard')" class="active">Dashboard</a>
+    <a href="#" onclick="showSection('blog')">Blog</a>
+    <a href="#" onclick="showSection('auth')">Authentication</a>
+    <a href="#" onclick="showSection('media')">Media</a>
+    <a href="#" onclick="showSection('comments')">Comments</a>
+    <a href="#" onclick="showSection('search')">Search</a>
+</div>
+
+<div class="main">
+
+    <div class="topbar">
+        <h1>Blog Management System</h1>
+    </div>
+
+    <div class="content">
+
+        <div id="dashboard" class="section active">
+            <div class="card">
+                <h2>Welcome 👋</h2>
+                <p>Manage blogs, users, media, and comments efficiently.</p>
+            </div>
+        </div>
+
+        <div id="blog" class="section">
+            <div class="card">
+                <h2>Create Blog</h2>
+                <input placeholder="Title">
+                <textarea placeholder="Content"></textarea>
+                <button>Create</button>
+            </div>
+
+            <div class="card">
+                <h2>Edit Blog</h2>
+                <button>Edit Existing Blog</button>
+            </div>
+
+            <div class="card">
+                <h2>Publish Blog</h2>
+                <button>Publish</button>
+            </div>
+        </div>
+
+        <div id="auth" class="section">
+            <div class="card">
+                <h2>Register</h2>
+                <input placeholder="Username">
+                <input type="password" placeholder="Password">
+                <button>Register</button>
+            </div>
+
+            <div class="card">
+                <h2>Login</h2>
+                <input placeholder="Username">
+                <input type="password" placeholder="Password">
+                <button>Login</button>
+            </div>
+        </div>
+
+        <div id="media" class="section">
+            <div class="card">
+                <h2>Upload Media</h2>
+                <input type="file">
+                <button>Upload</button>
+            </div>
+
+            <div class="card">
+                <h2>Media Library</h2>
+                <p>No media uploaded yet</p>
+            </div>
+        </div>
+
+        <div id="comments" class="section">
+            <div class="card">
+                <h2>Add Comment</h2>
+                <textarea placeholder="Write comment"></textarea>
+                <button>Add</button>
+            </div>
+
+            <div class="card">
+                <h2>Manage Comments</h2>
+                <p>All comments will appear here</p>
+            </div>
+        </div>
+
+        <div id="search" class="section">
+            <div class="card">
+                <h2>Search Blogs</h2>
+                <input placeholder="Search...">
+                <button>Search</button>
+            </div>
+
+            <div class="card">
+                <h2>Categories & Pagination</h2>
+                <p>Organize and navigate blogs easily</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function showSection(id) {
+    let sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('active'));
+
+    document.getElementById(id).classList.add('active');
+
+    let links = document.querySelectorAll('.sidebar a');
+    links.forEach(link => link.classList.remove('active'));
+
+    event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
